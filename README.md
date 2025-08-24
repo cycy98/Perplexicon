@@ -30,7 +30,7 @@ We'll have a better documentation later, but for now, here's how it works.
 
 ## Lexicon Files
 
-You'll need to make yourself a lexicon file. The way you do this is by copying this simple template:
+You'll need to make yourself a lexicon file, like [exemple.json](https://github.com/cycy98/Perplexicon/blob/master/exemple.json). The way you do this is by copying this simple template:
 
     {
         "poses": [
