@@ -2,7 +2,7 @@
     "poses": [
 	    {"pos": "noun", "abbr": "n."},
 	    {"pos": "verb", "abbr": "v."}
-    ]
+    ],
     "terms": [
 	    {"term":"nit", "defs":[["verb", "to see", "to watch", "to appear"], ["noun", "sight"]]},
 	    {"term":"writ", "defs":[["verb", "to hear", "to listen"], ["noun", "hearing"]]}
