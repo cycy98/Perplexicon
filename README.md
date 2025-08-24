@@ -6,7 +6,6 @@ A simple but capable system for making conlang lexicons.
 
 The way Perplexicon will function is so easy that anyone could figure it out. Simply update a single JSON file with new words and you will immediately be able to export them to as many filetypes as you want. Perplexicon is built with languages where one word can function as multiple parts of speech and/or has different meanings in different contexts in mind, but that doesn't have to be the case -- Perplexicon works just as well with languages where there is one word for every meaning.
 
-I have included two sample lexicons from conlangs I've made before. Sajem Tan ([sajem_tan.json](https://github.com/CodeTriangle/Perplexicon/blob/master/sajem_tan.json)) is a language that has all of the traits listed above. In this dictionary are three words that have several different definitions. Some of them need context to make sense due to them being inside jokes, but it's really just a technical demo to test whether the multiple definitions system works. Ki\*iul ([kiiul.json](https://github.com/CodeTriangle/Perplexicon/blob/master/kiiul.json)) is a language where none of these features apply. It's just to show that it works with languages that have one definition per word too.
 
 # List of Features:
 
@@ -25,7 +24,7 @@ I have included two sample lexicons from conlangs I've made before. Sajem Tan ([
 
 # How It Works
 
-I'll have a better documentation later, but for now, here's how it works.
+We'll have a better documentation later, but for now, here's how it works.
 
 ## Lexicon Files
 
