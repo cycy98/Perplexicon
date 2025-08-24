@@ -23,13 +23,17 @@ if args.query == None:
         fl = fl + lx.get_formatted_term(i, "index", temp=template_list[args.template[0]])
 else:
     if args.method == None or args.method[0].lower() == "term-part":
-        terms = lx.find_term(args.query[0], "term-part", temp=template_list[args.template[0]])
+        # Seems that temp is for template
+        #terms = lx.find_term(args.query[0], "term-part", temp=template_list[args.template[0]])
+        terms = lx.find_term(args.query[0], "term-part")
         for i in terms:
             fl = fl + lx.format_term(i)
     elif args.method[0].lower() == "term":
-        fl = lx.get_formatted_term(lx.find_term(args.query[0], "term", temp=template_list[args.template[0]]))
+        #fl = lx.get_formatted_term(lx.find_term(args.query[0], "term", temp=template_list[args.template[0]]))
+        fl = lx.format_term(lx.find_term(args.query[0], "term"))
     elif args.method[0].lower() == "index":
-        fl = lx.format_term(lx.find_term(int(args.query[0]), "index"), temp=template_list[args.template[0]])
+        #fl = lx.format_term(lx.find_term(int(args.query[0]), "index"), temp=template_list[args.template[0]])
+        fl = lx.format_term(lx.find_term(int(args.query[0]), "index"))
     else:
         print("Invalid search method")
         sys.exit()
