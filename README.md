@@ -107,3 +107,5 @@ Perplexicon comes with several different templates from which to choose. These h
 | `multiline-html` | Prints each definition on a separate line in HTML. |
 | `webster` | Built to mimic the style Merriam-Webster uses for their dictionaries. |
 | `webster-html` | Like `webster` but with HTML tags. |
+# More
+[Discord server](https://discord.gg/Nkbzsrrebp)
