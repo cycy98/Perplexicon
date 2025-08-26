@@ -1,0 +1,288 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007fff7d8e0bae, pid=23188, tid=3596
+#
+# JRE version:  (18.0.2.1+1) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (18.0.2.1+1-1, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# Problematic frame:
+# V  [jvm.dll+0x2e0bae]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: com.meamoria.lexurgy.cli.MainKt
+
+Host: 12th Gen Intel(R) Core(TM) i5-12600KF, 16 cores, 15G,  Windows 11 , 64 bit Build 22621 (10.0.22621.5415)
+Time: Mon Aug 25 21:06:24 2025 Eastern Daylight Time elapsed time: 0.014603 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000002209fbce920):  JavaThread "Unknown thread" [_thread_in_vm, id=3596, stack(0x00000058f5c00000,0x00000058f5d00000)]
+
+Stack: [0x00000058f5c00000,0x00000058f5d00000],  sp=0x00000058f5cfef80,  free space=1019k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x2e0bae]
+V  [jvm.dll+0x2e1021]
+V  [jvm.dll+0x646136]
+V  [jvm.dll+0x646360]
+V  [jvm.dll+0x64581b]
+V  [jvm.dll+0x640c86]
+V  [jvm.dll+0x7c3344]
+V  [jvm.dll+0x38be61]
+V  [jvm.dll+0x7a2023]
+V  [jvm.dll+0x40dc3f]
+V  [jvm.dll+0x40f611]
+C  [jli.dll+0x526b]
+C  [ucrtbase.dll+0x29333]
+C  [KERNEL32.DLL+0x1259d]
+C  [ntdll.dll+0x5af78]
+
+
+siginfo: EXCEPTION_ACCESS_VIOLATION (0xc0000005), reading address 0x0000000000000000
+
+
+Registers:
+RAX=0x0000b969b842ea8f, RBX=0x0000000000000000, RCX=0x0000000000000000, RDX=0x00007fff7df1b401
+RSP=0x00000058f5cfef80, RBP=0x0000000000000001, RSI=0x0000000800a7f240, RDI=0x0000000000000000
+R8 =0x0000000000000001, R9 =0x0000000000000001, R10=0x00000220bb65ee90, R11=0x0000000000000246
+R12=0x0000000000000001, R13=0x000002209da11a60, R14=0x0000000000000001, R15=0x00007fff7dc58510
+RIP=0x00007fff7d8e0bae, EFLAGS=0x0000000000010246
+
+Top of Stack: (sp=0x00000058f5cfef80)
+0x00000058f5cfef80:   00000220bb65eacf 00000058f5cff060
+0x00000058f5cfef90:   0000000000760000 00007fff7ddf1f00
+0x00000058f5cfefa0:   00000058f5cff000 000000000000000d
+0x00000058f5cfefb0:   00000058f5cff0d0 0000000000000000
+0x00000058f5cfefc0:   0000b969b842ea0f 0000000000000002
+0x00000058f5cfefd0:   0000b969b842ea8f 0000000800000000
+0x00000058f5cfefe0:   0000000000000000 00007fff7d8e1021
+0x00000058f5cfeff0:   0000000000000048 0000000000000000
+0x00000058f5cff000:   0000000000000000 00000220bb650580
+0x00000058f5cff010:   0000000800a7f238 0000005800000001
+0x00000058f5cff020:   0000000000000000 0000000000000000
+0x00000058f5cff030:   0000000000000000 0000000000000000
+0x00000058f5cff040:   0000000000000000 ffffffffffffff00
+0x00000058f5cff050:   00000220bb65ea00 00000220bb65ea00
+0x00000058f5cff060:   0000b969b842eaff 0000000000000000
+0x00000058f5cff070:   000002209da11a60 0000000000000000 
+
+Instructions: (pc=0x00007fff7d8e0bae)
+0x00007fff7d8e0aae:   00 48 83 c2 0f 48 c1 ea 03 48 63 d2 e8 d1 f3 35
+0x00007fff7d8e0abe:   00 48 8b d8 48 85 c0 74 0b 89 38 eb 09 41 c6 04
+0x00007fff7d8e0ace:   24 02 eb 22 33 db 49 83 7f 08 00 75 19 4c 63 84
+0x00007fff7d8e0ade:   24 80 00 00 00 48 8d 4b 04 48 8b d5 e8 a1 f4 56
+0x00007fff7d8e0aee:   00 49 89 5c 24 20 48 8b 9c 24 88 00 00 00 49 83
+0x00007fff7d8e0afe:   3e 00 74 15 48 8b 54 24 28 48 8b ce e8 51 86 dd
+0x00007fff7d8e0b0e:   ff 49 8b ce e8 29 86 dd ff 48 89 5e 20 48 8b 5c
+0x00007fff7d8e0b1e:   24 70 4c 89 76 10 4c 89 6e 18 48 83 c4 30 41 5f
+0x00007fff7d8e0b2e:   41 5e 41 5d 41 5c 5f 5e 5d c3 cc cc cc cc cc cc
+0x00007fff7d8e0b3e:   cc cc 40 53 48 83 ec 20 48 8b d9 e8 72 40 36 00
+0x00007fff7d8e0b4e:   48 8b 53 28 48 ff ca 48 03 d0 48 ff c8 48 f7 d0
+0x00007fff7d8e0b5e:   48 23 c2 48 83 c4 20 5b c3 cc cc cc cc cc cc cc
+0x00007fff7d8e0b6e:   cc cc 48 89 5c 24 10 48 89 6c 24 18 48 89 74 24
+0x00007fff7d8e0b7e:   20 57 48 83 ec 60 48 8b 05 1d 85 81 00 48 33 c4
+0x00007fff7d8e0b8e:   48 89 44 24 50 80 3d 05 1c 7e 00 00 0f b6 ea 48
+0x00007fff7d8e0b9e:   8b f1 74 17 80 39 00 75 12 48 8b 0d f2 77 84 00
+0x00007fff7d8e0bae:   48 8b 01 ff 50 20 48 8b d8 eb 08 48 8b 59 18 48
+0x00007fff7d8e0bbe:   83 c3 04 48 83 3d 07 79 84 00 00 40 b7 01 74 0f
+0x00007fff7d8e0bce:   48 8b d3 48 8d 0d c0 a4 63 00 e8 d3 73 f2 ff 48
+0x00007fff7d8e0bde:   8d 54 24 20 48 8b cb e8 d6 73 3b 00 85 c0 74 19
+0x00007fff7d8e0bee:   40 84 ed 74 14 48 8b d3 48 8d 0d c3 a4 63 00 e8
+0x00007fff7d8e0bfe:   1e d2 ff ff 40 32 ff eb 7a 80 3e 03 75 20 48 8b
+0x00007fff7d8e0c0e:   cb e8 1c 19 3b 00 84 c0 75 69 48 8b d3 48 8d 0d
+0x00007fff7d8e0c1e:   ce a4 63 00 e8 f9 d1 ff ff 40 32 ff eb 55 48 8b
+0x00007fff7d8e0c2e:   56 08 4c 8b 44 24 40 48 85 d2 74 05 49 3b d0 75
+0x00007fff7d8e0c3e:   0b 48 63 44 24 34 48 39 46 10 74 37 40 32 ff 40
+0x00007fff7d8e0c4e:   38 3d 27 30 85 00 74 1c 49 3b d0 48 8d 05 b0 a4
+0x00007fff7d8e0c5e:   63 00 48 8d 0d c1 a4 63 00 48 0f 45 c8 e8 b0 d1
+0x00007fff7d8e0c6e:   ff ff eb 0f 48 8b d3 48 8d 0d c4 a4 63 00 e8 9f
+0x00007fff7d8e0c7e:   d1 ff ff 80 3d f3 2f 85 00 00 74 10 40 84 ff 75
+0x00007fff7d8e0c8e:   0b c6 05 7b 97 86 00 01 b0 01 eb 04 40 0f b6 c7
+0x00007fff7d8e0c9e:   48 8b 4c 24 50 48 33 cc e8 c5 e1 56 00 4c 8d 5c 
+
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007fff7e0de550, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x000002209fc433f0 WorkerThread "GC Thread#0" [stack: 0x00000058f5d00000,0x00000058f5e00000] [id=1460]
+  0x000002209fc53fc0 ConcurrentGCThread "G1 Main Marker" [stack: 0x00000058f5e00000,0x00000058f5f00000] [id=2108]
+  0x000002209fc548c0 WorkerThread "G1 Conc#0" [stack: 0x00000058f5f00000,0x00000058f6000000] [id=2864]
+  0x000002209fc7ecd0 ConcurrentGCThread "G1 Refine#0" [stack: 0x00000058f6000000,0x00000058f6100000] [id=24232]
+  0x00000220bb651d30 ConcurrentGCThread "G1 Service" [stack: 0x00000058f6100000,0x00000058f6200000] [id=7156]
+
+=>0x000002209fbce920 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=3596, stack(0x00000058f5c00000,0x00000058f5d00000)]
+
+Threads with active compile tasks:
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000702800000, size: 4056 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 4 size 8 Array Of Cards #cards 16 size 48 Howl #buckets 8 coarsen threshold 3686 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 4096
+ CPUs: 16 total, 16 available
+ Memory: 16221M
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (Zero based)
+ Heap Region Size: 2M
+ Heap Min Capacity: 8M
+ Heap Initial Capacity: 254M
+ Heap Max Capacity: 4056M
+ Pre-touch: Disabled
+ Parallel Workers: 13
+ Concurrent Workers: 3
+ Concurrent Refinement Workers: 13
+ Periodic GC: Disabled
+
+Heap:
+ garbage-first heap   total 260096K, used 0K [0x0000000702800000, 0x0000000800000000)
+  region size 2048K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007fff7dcf1839]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (2 events):
+Event: 0.005 Loaded shared library C:\Program Files\Java\jdk-18.0.2.1\bin\java.dll
+Event: 0.006 Loaded shared library C:\Program Files\Java\jdk-18.0.2.1\bin\zip.dll
+
+
+Dynamic libraries:
+0x00007ff6d3840000 - 0x00007ff6d3850000 	C:\Program Files\Java\jdk-18.0.2.1\bin\java.exe
+0x00007ff882730000 - 0x00007ff882947000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff880da0000 - 0x00007ff880e64000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ff87fb80000 - 0x00007ff87ff52000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ff880180000 - 0x00007ff880291000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ff851610000 - 0x00007ff851628000 	C:\Program Files\Java\jdk-18.0.2.1\bin\jli.dll
+0x00007ff84faf0000 - 0x00007ff84fb0a000 	C:\Program Files\Java\jdk-18.0.2.1\bin\VCRUNTIME140.dll
+0x00007ff880a40000 - 0x00007ff880af1000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ff880460000 - 0x00007ff880507000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff882590000 - 0x00007ff882638000 	C:\WINDOWS\System32\sechost.dll
+0x00007ff880020000 - 0x00007ff880048000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ff880e70000 - 0x00007ff880f87000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ff881120000 - 0x00007ff8812d1000 	C:\WINDOWS\System32\USER32.dll
+0x00007ff87f990000 - 0x00007ff87f9b6000 	C:\WINDOWS\System32\win32u.dll
+0x00007ff86d320000 - 0x00007ff86d5bb000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.5697_none_27154c497380d676\COMCTL32.dll
+0x00007ff880c00000 - 0x00007ff880c29000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ff880050000 - 0x00007ff880173000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ff8802a0000 - 0x00007ff88033a000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ff86a030000 - 0x00007ff86a03a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff880420000 - 0x00007ff880451000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ff87ba30000 - 0x00007ff87ba3c000 	C:\Program Files\Java\jdk-18.0.2.1\bin\vcruntime140_1.dll
+0x00007ff84c120000 - 0x00007ff84c1ad000 	C:\Program Files\Java\jdk-18.0.2.1\bin\msvcp140.dll
+0x00007fff7d600000 - 0x00007fff7e211000 	C:\Program Files\Java\jdk-18.0.2.1\bin\server\jvm.dll
+0x00007ff880f90000 - 0x00007ff880f98000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ff869aa0000 - 0x00007ff869aa9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff879cd0000 - 0x00007ff879d04000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff882060000 - 0x00007ff8820d1000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ff87e7c0000 - 0x00007ff87e7d8000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ff877ce0000 - 0x00007ff877cea000 	C:\Program Files\Java\jdk-18.0.2.1\bin\jimage.dll
+0x00007ff8695e0000 - 0x00007ff869813000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ff8820e0000 - 0x00007ff882472000 	C:\WINDOWS\System32\combase.dll
+0x00007ff880c50000 - 0x00007ff880d28000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ff8686e0000 - 0x00007ff868712000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ff880340000 - 0x00007ff8803bb000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ff84e720000 - 0x00007ff84e745000 	C:\Program Files\Java\jdk-18.0.2.1\bin\java.dll
+0x00007ff84e900000 - 0x00007ff84e918000 	C:\Program Files\Java\jdk-18.0.2.1\bin\zip.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-18.0.2.1\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.5697_none_27154c497380d676;C:\Program Files\Java\jdk-18.0.2.1\bin\server
+
+VM Arguments:
+java_command: com.meamoria.lexurgy.cli.MainKt
+java_class_path (initial): c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\cli-1.7.5.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\core-1.7.5.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlin-stdlib-jdk8-1.8.21.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\clikt-jvm-2.7.0.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\jna-platform-5.5.0.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\jna-5.5.0.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlinx-serialization-json-jvm-1.5.1.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlinx-serialization-core-jvm-1.5.1.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlin-stdlib-jdk7-1.8.21.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlin-stdlib-1.8.21.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlin-stdlib-common-1.8.21.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\antlr4-runtime-4.13.1.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\annotations-13.0.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 12                                        {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 13                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 2097152                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 266338304                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 4253024256                                {product} {ergonomic}
+   size_t MaxNewSize                               = 2550136832                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 2097152                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 7602480                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122027880                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122027880                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 4253024256                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk-18.0.2.1
+CLASSPATH=c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\cli-1.7.5.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\core-1.7.5.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlin-stdlib-jdk8-1.8.21.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\clikt-jvm-2.7.0.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\jna-platform-5.5.0.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\jna-5.5.0.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlinx-serialization-json-jvm-1.5.1.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlinx-serialization-core-jvm-1.5.1.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlin-stdlib-jdk7-1.8.21.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlin-stdlib-1.8.21.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\kotlin-stdlib-common-1.8.21.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\antlr4-runtime-4.13.1.jar;c:\Users\micha\Perplexicon\SCmodules\Lexurgy\lexurgy-1.7.5\lib\annotations-13.0.jar
+PATH=C:\Program Files\Eclipse Adoptium\jdk-17.0.16.8-hotspot\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\HaxeToolkit\haxe;C:\HaxeToolkit\neko;C:\Program Files\dotnet\;D:\nodejs\;C:\Program Files\Git\cmd;D:\haxetoolkit\haxe;D:\haxetoolkit\neko;C:\winlibs\mingw64\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.2\;C:\ProgramData\chocolatey\bin;H:\Noble;H:\RAKUDO\bin;H:\RAKUDO\share\perl6\site\bin;C:\GNU-Prolog\bin;C:\Users\micha\luvit;H:\LUA\lua-5.4.2_Win64_bin;H:\GO\bin;C:\Program Files\Tailscale\;H:\antlr-4.13.2-complete.jar;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\Program Files\GitHub CLI\;C:\Users\micha\.cargo\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\HaxeToolkit\haxe;C:\HaxeToolkit\neko;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;D:\nodejs\;C:\Program Files\Git\cmd;D:\haxetoolkit\haxe;D:\haxetoolkit\neko;C:\Program Files\Java\jdk-18.0.2.1\bin;C:\winlibs\mingw64\bin;C:\Program Files\GitHub CLI\;C:\Program Files (x86)\Windows Kits\10\Windows Pe;C:\Users\micha\AppData\Roaming\cabal\bin;C:\tools\ghc-9.8.2\bin;D:\Microsoft VS Code\bin;H:\Comma\Comma Community Edition 2023.07.0\bin;;C:\Users\micha\AppData\Local\Microsoft\WindowsApps;C:\ProgramData\micha\GitHubDesktop\bin;H:\texlive\2024\bin\windows;C:\Users\micha\go\bin;H:\clang+llvm-18.1.8-x86_64-pc-windows-msvc.tar\clang+llvm-18.1.8-x86_64-pc-windows-msvc\bin;;c:\Users\micha\.vscode\extensions\ms-python.debugpy-2025.10.0-win32-x64\bundled\scripts\noConfigScripts;c:\Users\micha\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand
+USERNAME=micha
+LANG=en_US.UTF-8
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 151 Stepping 2, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 22621 (10.0.22621.5415)
+OS uptime: 0 days 2:59 hours
+Hyper-V role detected
+
+CPU: total 16 (initial active 16) (8 cores per cpu, 2 threads per core) family 6 model 151 stepping 2 microcode 0x36, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt, clwb, hv, serialize
+
+Memory: 4k page, system-wide physical 16221M (4642M free)
+TotalPageFile size 28509M (AvailPageFile size 8816M)
+current process WorkingSet (physical memory assigned to process): 13M, peak: 13M
+current process commit charge ("private bytes"): 346M, peak: 346M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (18.0.2.1+1-1) for windows-amd64 JRE (18.0.2.1+1-1), built on Aug 16 2022 01:46:33 by "mach5one" with MS VC++ 16.8 / 16.9 (VS2019)
+
+END.
