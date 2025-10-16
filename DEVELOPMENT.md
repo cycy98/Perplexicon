@@ -3,7 +3,7 @@
 ## Coding
 
 - Pycharm is recommended.
-- Use [ruff|https://docs.astral.sh/ruff/] for linting and formatting.
+- Use [ruff](https://docs.astral.sh/ruff/) for linting and formatting.
 - Always use type annotations
 - Catch the exact Exception type like ValueError instead of the generic "Exception" when possible
 
