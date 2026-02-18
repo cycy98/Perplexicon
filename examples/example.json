@@ -1,10 +1,22 @@
 {
     "poses": [
-	    {"pos": "noun", "abbr": "n."},
-	    {"pos": "verb", "abbr": "v."}
+        {"pos": "noun", "abbr": "n."},
+        {"pos": "verb", "abbr": "v."}
     ],
     "terms": [
-	    {"term":"nit", "defs":[["verb", "to see", "to watch", "to appear"], ["noun", "sight"]]},
-	    {"term":"writ", "defs":[["verb", "to hear", "to listen"], ["noun", "hearing"]]}
+        {
+            "term": "nit",
+            "senses": [
+                {"pos": "verb", "glosses": ["to see", "to watch", "to appear"]},
+                {"pos": "noun", "glosses": ["sight"]}
+            ]
+        },
+        {
+            "term": "writ",
+            "senses": [
+                {"pos": "verb", "glosses": ["to hear", "to listen"]},
+                {"pos": "noun", "glosses": ["hearing"]}
+            ]
+        }
     ]
 }

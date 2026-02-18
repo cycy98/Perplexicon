@@ -35,7 +35,7 @@ You'll need to make yourself a lexicon file, like [example.json](https://github.
     {
         "poses": [
 
-        ]
+        ],
         "terms": [
 
         ]
@@ -53,23 +53,23 @@ For example, if you want to abbreviate "noun" to "n.", type:
 
 ### Adding Terms
 
-Terms are any morpheme that can be used. Put these in the `terms` array. Add:
+Terms are any morpheme that can be used. Put these in the `terms` array. Each term has a `senses` array where each sense specifies its part of speech (`pos`) and definitions (`glosses`):
 
-    {"term":"TERM", "defs":[["PART OF SPEECH 1", "DEFINITION 1", "DEFINITION 2"], ["PART OF SPEECH 2", "DEFINITION 3", "DEFINITION 4"]]}
+    {"term": "TERM", "senses": [{"pos": "PART OF SPEECH", "glosses": ["DEF 1", "DEF 2"]}]}
 
-If the term can't function as more than one part of speech, get rid of the second chunk. If it has five parts of speech that it can function as, add a few more blocks. If the term only has one definition, get rid of one of them. If it has ten, add more. It's super easy to make a lexicon file that is both readable and extensible.
+If the term can't function as more than one part of speech, use a single sense. If it has five parts of speech that it can function as, add more senses. If the term only has one definition, use a single-element glosses array. If it has ten, add more. It's super easy to make a lexicon file that is both readable and extensible.
 
 For example, if [*parecer*](http://www.spanishdict.com/translate/parecer) is the verb for "to seem", you'd add this:
 
-    {"term":"parecer", "defs":[["verb", "to seem"]]}
+    {"term": "parecer", "senses": [{"pos": "verb", "glosses": ["to seem"]}]}
 
 But, if it can also mean "to look" and "to appear" you would add them as such.
 
-    {"term":"parecer", "defs":[["verb", "to seem", "to look", "to appear"]]}
+    {"term": "parecer", "senses": [{"pos": "verb", "glosses": ["to seem", "to look", "to appear"]}]}
 
 If it can also be used to mean "opinion", then:
 
-    {"term":"parecer", "defs":[["verb", "to seem", "to look", "to appear"], ["noun", "opinion"]]}
+    {"term": "parecer", "senses": [{"pos": "verb", "glosses": ["to seem", "to look", "to appear"]}, {"pos": "noun", "glosses": ["opinion"]}]}
 
 ## Command Line
 
@@ -77,12 +77,12 @@ Open up a command window in your working directory. Different parameters change 
 
 | You type: | What happens: |
 |-----------|---------------|
-| `python print_lex.py` | Error telling you that you need a lexicon file. |
-| `python print_lex.py lexicon.json` | Prints every entry in lexicon.json. |
-| `python print_lex.py lexicon.json -q uk` | Prints every entry in lexicon.json where the term contains "uk". |
-| `python print_lex.py lexicon.json -q uk -m term` | Prints the entry in lexicon.json that the term is "uk" (See [Search Methods](#search-methods) below. |
-| `python print_lex.py lexicon.json -t html` | Prints every entry in lexicon.json using template HTML (See [Templates](#templates) below. |
-| `python print_lex.py lexicon.json -o output.txt` | Prints every entry in lexicon.json to the file output.txt |
+| `python cli.py` | Error telling you that you need a lexicon file. |
+| `python cli.py lexicon.json` | Prints every entry in lexicon.json. |
+| `python cli.py lexicon.json -q uk` | Prints every entry in lexicon.json where the term contains "uk". |
+| `python cli.py lexicon.json -q uk -m term` | Prints the entry in lexicon.json that the term is "uk" (See [Search Methods](#search-methods) below. |
+| `python cli.py lexicon.json -t html` | Prints every entry in lexicon.json using template HTML (See [Templates](#templates) below. |
+| `python cli.py lexicon.json -o output.txt` | Prints every entry in lexicon.json to the file output.txt |
 
 ## Search Methods
 
@@ -91,8 +91,9 @@ When searching for specific terms, there are different ways to get that informat
 | Method | Explanation |
 |--------|-------------|
 | `term` | Returns the entry where the term *exactly* matches the query. |
+| `term-part` | Returns any entry where the term contains the query (case-insensitive). **This is the default when `-q` is used without `-m`.** |
+| `gloss` | Returns any entry where a gloss (definition) contains the query (case-insensitive). |
 | `index` | Returns the entry at the specified position. |
-| `term-part` | Returns any entry where the term contains the query. |
 
 ## Templates
 
