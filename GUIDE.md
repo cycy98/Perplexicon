@@ -1,14 +1,29 @@
 # Perplexicon: A Complete Guide
 
-Perplexicon is a tool for building dictionaries for invented languages. You keep your words in a text file and use the command line to view, search, and export them.
-
 > **Requirement:** Python 3.13 or newer. Check with `python --version`. No other installs needed.
+
+---
+
+## The One Thing to Know Before You Start
+
+Everything in Perplexicon is a container holding smaller containers:
+
+```
+Lexicon
+  └── Word          (a term in your language)
+        └── Sense   (one grammatical role of that word)
+              └── Gloss (one definition within that role)
+```
+
+A word like *nit* can be both a verb and a noun — that's two **senses**. "To see" and "to watch" are two **glosses** inside the verb sense. Everything this tool does — building the file, running commands, calling the API — is either putting something into this hierarchy or looking something up in it.
+
+Hold that picture. Every step below is just filling it in.
 
 ---
 
 ## What You're Working Towards
 
-Before anything else, here's what Perplexicon produces. Given a two-word language, running:
+Given a two-word language, running:
 
 ```
 python cli.py mylang.json
@@ -21,23 +36,21 @@ nit - (v.) 1. to see 2. to watch 3. to appear (n.) 1. sight
 writ - (v.) 1. to hear 2. to listen (n.) 1. hearing
 ```
 
-Each line is one word. The abbreviation in parentheses is the part of speech. The numbered items are its definitions. *nit* has two grammatical roles — verb and noun — on the same line.
+Each line is one word. The abbreviation in parentheses marks the sense. Numbered items are its glosses. *nit* carries two senses — verb and noun — on a single line.
 
-Everything in this guide is about producing that output, then doing more with it.
+Everything in Part 1 is about producing this output. Parts 2 and 3 show you what to do once it works.
 
 ---
 
 ## Part 1: Building Your Lexicon File
 
-Your lexicon is a single file written in JSON — a plain text format where quotes, colons, commas, and brackets all have meaning. A single missing comma will cause an error, so copy the examples carefully.
-
-The file has exactly two sections: one for declaring your parts of speech, one for your words.
+Your lexicon is a single JSON file. JSON is plain text where quotes, colons, commas, and brackets carry meaning — one missing comma will cause an error, so copy the examples carefully.
 
 ---
 
-### Step 1: Create the empty file
+### Step 1: Create the file
 
-Create a file called `mylang.json` and paste in this skeleton:
+Create `mylang.json` and paste in this skeleton:
 
 ```json
 {
@@ -46,13 +59,13 @@ Create a file called `mylang.json` and paste in this skeleton:
 }
 ```
 
-`poses` is where you declare your grammatical categories. `terms` is where your words go.
+`poses` is where you declare your grammatical categories. `terms` is where your words go. That's the whole file — two lists.
 
 ---
 
 ### Step 2: Declare your parts of speech
 
-Our example language uses nouns and verbs. Add them to `poses`:
+Add noun and verb to `poses`:
 
 ```json
 {
@@ -64,15 +77,21 @@ Our example language uses nouns and verbs. Add them to `poses`:
 }
 ```
 
-Each entry has two fields: `pos` is the full name, `abbr` is what appears in the output. You can name them anything — `"pos": "adjective", "abbr": "adj."` works just as well.
+`pos` is the full name used internally; `abbr` is what prints in the output.
 
-> **Important:** Every part of speech you use on a word must be declared here first. Perplexicon will reject the file if a word references a category that doesn't exist in `poses`.
+**Why declare them separately?** Because every sense you write on a word must reference a category that exists here. Perplexicon checks this when it loads your file and rejects anything inconsistent. You'll never end up with a word that references a part of speech you forgot to define.
+
+> If you use a category in a word before declaring it here, you'll see:
+> ```
+> nit: undeclared POS 'adjective'
+> ```
+> Add `{"pos": "adjective", "abbr": "adj."}` to `poses` and run again.
 
 ---
 
-### Step 3: Add your first word
+### Step 3: Add your first word with one sense and one gloss
 
-Now add *nit* with a single meaning:
+Now add *nit* as a verb meaning "to see":
 
 ```json
 {
@@ -91,9 +110,9 @@ Now add *nit* with a single meaning:
 }
 ```
 
-A **sense** is one grammatical role of a word. A **gloss** is a definition within that sense.
+A **sense** is one grammatical role of a word — here, *nit* as a verb. A **gloss** is one definition within that role — here, "to see". One word, one sense, one gloss.
 
-Run it now:
+Run it:
 
 ```
 python cli.py mylang.json
@@ -105,13 +124,13 @@ You should see:
 nit - (v.) 1. to see
 ```
 
-If you do, everything is working. If not, check for a missing quote or comma in the file.
+If you do, everything is working. If not, check for a missing quote or comma.
 
-> **Note on `pos` appearing twice:** In `poses` you are *declaring* a category. Inside a sense you are *referencing* one you already declared. The string must match exactly — `"verb"` and `"Verb"` are different.
+> **Note:** `pos` appears in two places. In `poses` you are *declaring* a category. Inside a sense, you are *referencing* one. The string must match exactly — `"verb"` and `"Verb"` are not the same.
 
 ---
 
-### Step 4: Add more definitions
+### Step 4: Add more glosses to the same sense
 
 *nit* also means "to watch" and "to appear". Add them to the same `glosses` list:
 
@@ -132,8 +151,6 @@ If you do, everything is working. If not, check for a missing quote or comma in 
 }
 ```
 
-Run it:
-
 ```
 python cli.py mylang.json
 ```
@@ -142,13 +159,13 @@ python cli.py mylang.json
 nit - (v.) 1. to see 2. to watch 3. to appear
 ```
 
-The order you write the glosses is the order they print. The first one is the primary meaning.
+The order you write the glosses is the order they print. The first is the primary meaning.
 
 ---
 
-### Step 5: Give a word two parts of speech
+### Step 5: Give the word a second sense
 
-*nit* is also a noun meaning "sight". Add a second sense:
+*nit* is also a noun meaning "sight". Add a second sense — a second grammatical role — to the same word:
 
 ```json
 {
@@ -168,8 +185,6 @@ The order you write the glosses is the order they print. The first one is the pr
 }
 ```
 
-Run it:
-
 ```
 python cli.py mylang.json
 ```
@@ -178,7 +193,12 @@ python cli.py mylang.json
 nit - (v.) 1. to see 2. to watch 3. to appear (n.) 1. sight
 ```
 
-One word, two senses. This is the core of Perplexicon — a word can carry as many grammatical roles as your language needs, each with its own set of definitions.
+One word, two senses, four glosses total. A word can carry as many senses as your language needs, each with its own definitions.
+
+> Every sense must have at least one gloss. If you accidentally leave one empty, you'll see:
+> ```
+> nit: sense needs ≥1 gloss
+> ```
 
 ---
 
@@ -211,8 +231,6 @@ Add *writ* the same way:
 }
 ```
 
-Run it:
-
 ```
 python cli.py mylang.json
 ```
@@ -222,47 +240,31 @@ nit - (v.) 1. to see 2. to watch 3. to appear (n.) 1. sight
 writ - (v.) 1. to hear 2. to listen (n.) 1. hearing
 ```
 
-That's the output from the top of this guide. Your lexicon is complete.
+Your lexicon now holds 2 words, 4 senses, and 5 glosses. That's the output from the top of this guide.
 
----
-
-### When things go wrong
-
-Perplexicon checks your file when it loads and gives a clear error if something is wrong. Here are the ones you're most likely to see:
-
-**Right after Step 2** — if you use a part of speech in a word that isn't in `poses`:
-```
-nit: undeclared POS 'adjective'
-```
-Add `{"pos": "adjective", "abbr": "adj."}` to `poses`.
-
-**Right after Step 6** — if you accidentally write the same word twice:
-```
-Duplicate term 'nit'
-```
-Remove one entry, or combine their senses into a single entry.
-
-**Any time** — if a sense has no definitions at all:
-```
-nit: sense needs ≥1 gloss
-```
-Every sense must have at least one item in its `glosses` list.
+> If you write the same word twice by accident:
+> ```
+> Duplicate term 'nit'
+> ```
+> Remove one entry, or merge their senses into a single one.
 
 ---
 
 ## Part 2: Using the Command Line
 
-All commands are run from the same folder as your `mylang.json` file.
-
-### Print everything
+Every command runs your lexicon through a simple pipeline:
 
 ```
-python cli.py mylang.json
+filter  →  sort  →  format  →  output
 ```
 
-### Search by word
+The flags below are each a knob on one stage of that pipeline. You can combine any of them freely.
 
-`-q` filters the output. By default it matches any word that *contains* your query:
+---
+
+### Filter: search your lexicon
+
+**By word** (`-q`, default behavior — matches any word containing your query):
 
 ```
 python cli.py mylang.json -q nit
@@ -271,9 +273,7 @@ python cli.py mylang.json -q nit
 nit - (v.) 1. to see 2. to watch 3. to appear (n.) 1. sight
 ```
 
-### Search by definition
-
-Use `-m gloss` to search inside definitions instead:
+**By definition** (`-m gloss` — searches inside glosses instead):
 
 ```
 python cli.py mylang.json -q hear -m gloss
@@ -282,17 +282,23 @@ python cli.py mylang.json -q hear -m gloss
 writ - (v.) 1. to hear 2. to listen (n.) 1. hearing
 ```
 
-For the full list of search modes, see the [README](README.md#search-methods).
+For all search modes, see [README.md#search-methods](README.md#search-methods).
 
-### Sort alphabetically
+---
+
+### Sort: alphabetize the output
 
 ```
 python cli.py mylang.json -s
 ```
 
-### Change the output format
+Sorting and filtering work together — the filtered results are sorted.
 
-`-t` switches the template. Here is *nit* rendered in three formats:
+---
+
+### Format: change the output template
+
+`-t` selects a template. Here is *nit* in three of them:
 
 **`default`**
 ```
@@ -315,56 +321,71 @@ nit:
 nit v.: 1. to see 2. to watch 3. to appear  n.: 1. sight
 ```
 
-For the full list of templates, see the [README](README.md#templates).
+For the full list, see [README.md#templates](README.md#templates).
 
-### Save to a file
+---
 
-`-o` writes the output to a file instead of printing it:
+### Output: write to a file
+
+`-o` sends the result to a file instead of the terminal:
 
 ```
 python cli.py mylang.json -o output.txt
 ```
 
+---
+
 ### Combining flags
 
-All flags work together:
+All flags compose. Any stage of the pipeline can be set independently:
 
 ```
 python cli.py mylang.json -s -t html -o dictionary.html
-```
-
-```
 python cli.py mylang.json -q hear -m gloss -t latex -o results.tex
 ```
 
 ---
 
-## Part 3: Going Further
+## Part 3: The Python API
 
-Once your lexicon grows you may want to do more than the command line allows — bulk checks, merging files from collaborators, generating statistics. Everything is available as Python functions you can call directly from your own scripts.
+The command line covers the common cases. For bulk operations, merging files from collaborators, or generating statistics, you can work with your lexicon directly in Python.
+
+The same hierarchy you built in Part 1 — words, senses, glosses — is exactly what `load()` gives you back as Python objects. Everything else in the API is an operation on that structure.
 
 ```python
 from perplexicon import load, save, merge, stats, find_synonyms
 ```
 
-**Merge two lexicons.** Words that exist in both are combined automatically:
+---
+
+**Merge two lexicons.** Words that exist in both are combined by sense; novel words are added:
+
 ```python
 combined = merge(load("dialect_a.json"), load("dialect_b.json"))
 save(combined, "merged.json")
 ```
 
-**Get statistics:**
+---
+
+**Get statistics** — word count, sense count, gloss count, and more:
+
 ```python
 s = stats(load("mylang.json"))
 print(s.entries, s.senses, s.glosses)
 # s.polysemous = number of words with more than one sense
 ```
 
-**Find accidental synonyms** — two different words with the exact same definition:
+This is the same count you tracked manually through Part 1: *nit* and *writ*, 4 senses, 5 glosses.
+
+---
+
+**Find accidental synonyms** — two different words mapped to the exact same definition:
+
 ```python
 dupes = find_synonyms(load("mylang.json"))
 # {"to see": [("nit", "verb"), ("vitar", "verb")]}
 ```
+
 Useful once a lexicon grows large enough that duplicates are easy to miss.
 
 ---
@@ -381,10 +402,23 @@ Useful once a lexicon grows large enough that duplicates are easy to miss.
 }
 ```
 
+**The hierarchy:**
+```
+Lexicon → Words → Senses → Glosses
+```
+
 **Common commands:**
 ```bash
-python cli.py mylang.json                         # print all
-python cli.py mylang.json -q nit                  # search by word
-python cli.py mylang.json -q hear -m gloss        # search by definition
-python cli.py mylang.json -s -t html -o out.html  # sorted HTML export
+python cli.py mylang.json                          # print all
+python cli.py mylang.json -q nit                   # filter by word
+python cli.py mylang.json -q hear -m gloss         # filter by definition
+python cli.py mylang.json -s -t html -o out.html   # sort, format, and save
 ```
+
+**Error quick-reference:**
+
+| Message | Cause | Fix |
+|---|---|---|
+| `nit: undeclared POS 'adjective'` | Used a category not in `poses` | Add it to `poses` |
+| `Duplicate term 'nit'` | Same word appears twice | Remove one or merge senses |
+| `nit: sense needs ≥1 gloss` | A sense has an empty `glosses` list | Add at least one definition |
