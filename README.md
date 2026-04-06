@@ -26,50 +26,7 @@ The way Perplexicon will function is so easy that anyone could figure it out. Si
 
 # How It Works
 
-We'll have a better documentation later, but for now, here's how it works.
-
-## Lexicon Files
-
-You'll need to make yourself a lexicon file, like [example.json](https://github.com/cycy98/Perplexicon/blob/master/examples/example.json). The way you do this is by copying this simple template:
-
-    {
-        "poses": [
-
-        ],
-        "terms": [
-
-        ]
-    }
-
-### Adding Parts of Speech
-
-Within the `pos` array, you can define different parts of speech and how to abbreviate them. For each part of speech add:
-
-    {"pos": "PART OF SPEECH", "abbr": "ABBREVIATION"}
-
-For example, if you want to abbreviate "noun" to "n.", type:
-
-    {"pos": "noun", "abbr": "n."}
-
-### Adding Terms
-
-Terms are any morpheme that can be used. Put these in the `terms` array. Each term has a `senses` array where each sense specifies its part of speech (`pos`) and definitions (`glosses`):
-
-    {"term": "TERM", "senses": [{"pos": "PART OF SPEECH", "glosses": ["DEF 1", "DEF 2"]}]}
-
-If the term can't function as more than one part of speech, use a single sense. If it has five parts of speech that it can function as, add more senses. If the term only has one definition, use a single-element glosses array. If it has ten, add more. It's super easy to make a lexicon file that is both readable and extensible.
-
-For example, if [*parecer*](http://www.spanishdict.com/translate/parecer) is the verb for "to seem", you'd add this:
-
-    {"term": "parecer", "senses": [{"pos": "verb", "glosses": ["to seem"]}]}
-
-But, if it can also mean "to look" and "to appear" you would add them as such.
-
-    {"term": "parecer", "senses": [{"pos": "verb", "glosses": ["to seem", "to look", "to appear"]}]}
-
-If it can also be used to mean "opinion", then:
-
-    {"term": "parecer", "senses": [{"pos": "verb", "glosses": ["to seem", "to look", "to appear"]}, {"pos": "noun", "glosses": ["opinion"]}]}
+Your lexicon lives in a single JSON file with two arrays: `poses` (your parts of speech and their abbreviations) and `terms` (your words, each with one or more senses and definitions). See [example.json](https://github.com/cycy98/Perplexicon/blob/master/examples/example.json) for a sample, or follow the [complete walkthrough in the guide](GUIDE.md).
 
 ## Command Line
 
@@ -109,4 +66,6 @@ Perplexicon comes with several different templates from which to choose. These h
 | `webster` | Built to mimic the style Merriam-Webster uses for their dictionaries. |
 | `webster-html` | Like `webster` but with HTML tags. |
 # More
+[Complete guide](GUIDE.md) — step-by-step walkthrough, error recovery, and Python API
+
 [Discord server](https://discord.gg/Nkbzsrrebp)
